@@ -10,6 +10,7 @@ const getAllHouses = () => axios.get(baseURL).then(housesCallback).catch(errCall
 const createHouse = body => axios.post(baseURL, body).then(housesCallback).catch(errCallback)
 const deleteHouse = id => axios.delete(`${baseURL}/${id}`).then(housesCallback).catch(errCallback)
 const updateHouse = (id, type) => axios.put(`${baseURL}/${id}`, {type}).then(housesCallback).catch(errCallback)
+const addToFav = (id, type) => axios.put(`${baseURL}/${id}`, {type}).then(housesCallback).catch(errCallback)
 
 function submitHandler(e) {
     e.preventDefault()
@@ -43,6 +44,7 @@ function createHouseCard(house) {
         <button onclick="updateHouse(${house.id}, 'plus')">+</button>
     </div>
     <button onclick="deleteHouse(${house.id})">delete</button>
+    <button onclick="addToFav(${house.id})">Is a button</button>
     `
 
 
@@ -55,6 +57,9 @@ function displayHouses(arr) {
         createHouseCard(arr[i])
     }
 }
+
+favHouseList =[]
+console.log(favHouseList)
 
 form.addEventListener('submit', submitHandler)
 

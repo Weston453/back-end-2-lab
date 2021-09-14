@@ -12,6 +12,7 @@ app.get('/api/houses', ctrl.getHouses)
 app.post('/api/houses', ctrl.createHouse)
 app.delete('/api/houses/:id', ctrl.deleteHouse)
 app.put('/api/houses/:id', ctrl.updateHouse)
+app.put('/api/houses/:id', ctrl.addToFav)
 
 const port = 4004
 app.listen(port, console.log(`Listening on port ${port}`))

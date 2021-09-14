@@ -44,5 +44,11 @@ module.exports = {
         }else {
             res.sendStatus(400)
         }
+    },
+    addToFav: (req, res) => {
+        const {id} = req.params
+        const{type} =  req.body
+        let index = house.findIndex(h => h.id === +id);
+        house.push(favHouseList)
     }
 };
