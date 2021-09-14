@@ -20,15 +20,19 @@ module.exports = {
             price,
             imageURL
         }
-        house.push(newHouse)
-        globalId ++
-        res.status(200).send(house)
+        if (!address || !price || !imageURL){
+            return res.status(400).send('incomplete')
+        } else{
+            house.push(newHouse)
+            globalId ++
+            res.status(200).send(house)
+        }
     },
     updateHouse: (req, res) => {
         const {id} = req.params
         const{type} = req.body 
         let index = house.findIndex(h => h.id === +id);
-        
+
         if (house[index].price === 0 && type === 'minus') {
             res.status(400).send('Cannot have negative house price.')
         }else if (type === 'plus') {
